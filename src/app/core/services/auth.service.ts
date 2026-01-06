@@ -19,7 +19,7 @@ interface LoginResponse {
 
 export class AuthService {
 private baseUrl = environment.apiBaseUrl;
-    private userKey = 'currentUser';
+  private userKey = 'currentUser';
   private tokenKey = 'authToken';
   private roleKey = 'role';
   private idKey = 'userId';
@@ -98,7 +98,5 @@ getrole() {
         Authorization: `Bearer ${this.getToken()}`,
       });
     }
-  signup(data: any) {
-    return this.api.post('/users/userdetails', data);
-  }
+  
 }

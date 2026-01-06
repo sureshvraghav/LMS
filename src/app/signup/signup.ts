@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../core/services/auth.service';
+import { ApiService } from '../core/services/api.service';
  interface RegisterResponse {
   status: number;
   message: string;
@@ -35,8 +36,10 @@ export class Signup {
     isLoading = false;
       errorMessage = '';
    constructor(
+    
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+      private httpService:ApiService,
   ) {}
  
  
@@ -67,7 +70,8 @@ export class Signup {
       password: this.user.password
     };
       this.isLoading=true;
-     this.authService.signup(signupPayload).subscribe({
+
+     this.httpService.post('users/userdetails', signupPayload).subscribe({
       next: (res) => {
           this.message = 'Registration Successful! Redirecting to login...';
         console.log('Signup success', res);

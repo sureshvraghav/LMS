@@ -57,10 +57,10 @@ this.loading=true;
   this.authService.login(this.login.email,this.login.password).subscribe({
     next:(res)=>{
         this.loading = false;
-      console.log("login successfully",res);
+         console.log("login successfully",res);
      
         this.message = 'Login Successful';
-        setTimeout(() => this.router.navigate(['/signup']), 800);
+        setTimeout(() => this.router.navigate(['/dashboard']), 800);
         console.log('Login successful', res);
     },
     error:(err)=>{
