@@ -1,7 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LiveClass } from "./live-class/live-class";
+import { liveclass } from '../core/services/liveclass/liveclass';
+import { Router } from '@angular/router';
+import { ApiService } from '../core/services/api.service';
 
+
+
+
+interface ApiResponse<T> {
+  status: number;
+  message: string;
+  data: T;
+}
+ interface Course {
+  title: string;
+  totalhours: string;
+  level: string;
+  startdate: string;
+  enddate: string;
+  content: string;
+  modules: string;
+  metadata: Metadata[];
+  trainer: 'Mr Jacob Jones',
+  active: false;
+  rating: 6,
+}
+
+ interface Metadata {
+  fileName: string;
+  mimeType: string;
+  width: number;
+  height: number;
+  fileSizeKB: number;
+}
 @Component({
   selector: 'app-courses',
   standalone: true,
@@ -9,9 +41,42 @@ import { LiveClass } from "./live-class/live-class";
   templateUrl: './courses.html',
   styleUrls: ['./courses.scss']
 })
-export class Courses {
-
+export class Courses implements OnInit{
+  course: Course[] = [];
+  loading = true;
+  error = '';
+ ngOnInit(): void {
+   this.liveclass()
+  }
+ 
+  constructor( private liveservice: liveclass,
+    private router: Router,
+    private api:ApiService){}
+  
   activeTab: 'active' | 'completed' | 'similar' = 'active';
+liveclass()
+   {
+      console.log("gowtham")
+       this.api.get('addnewcourses/getallcourses').subscribe({
+       next:(res:any)=>{
+      // this.courses = res.data;
+       this.course = res.data;
+        this.loading = false;
+        this.loading = false;
+      console.log(res.data);
+    },
+    error:(err)=>{
+       this.error = 'Failed to load courses';
+        this.loading = false;
+     
+    }
+  })
+
+   
+ 
+
+  
+}
 
   courses = [
     {

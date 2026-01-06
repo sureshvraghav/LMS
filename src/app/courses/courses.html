@@ -21,35 +21,41 @@
   <div *ngIf="activeTab === 'active'">
 
     <div class="courses-layout">
+     
 
+     
       <!-- LEFT -->
       <div class="courses-list">
         <div class="course-card"
-             *ngFor="let course of courses"
-             [class.active]="course.active">
+             *ngFor="let cours of course"
+             [class.active]="cours.active">
 
-          <img [src]="course.image" />
-
+          <!-- <img [src]="course.image" /> -->
+             <img
+        *ngIf="cours.metadata?.length"
+        [src]="'http://localhost:8080/uploads/' + cours.metadata[0].fileName"
+        alt="Cours Image"
+      />
           <div class="course-info">
-            <h3>{{ course.title }}</h3>
+            <h3>{{ cours.title }}</h3>
 
             <div class="stars">
-              <i class="fa-solid fa-star" *ngFor="let s of [].constructor(course.rating)"></i>
+              <i class="fa-solid fa-star" *ngFor="let s of [].constructor(cours.rating)"></i>
             </div>
 
             <p class="meta">
-              {{ course.hours }} Total Hours · {{ course.modules }} Modules · {{ course.level }}
+              {{ cours.totalhours }} Total Hours · {{ cours.modules }} Modules · {{ cours.level }}
             </p>
 
             <p class="trainer">
               <span class="section-title">Trainer Details</span><br>
-              <b>{{ course.trainer }}</b>
+              <b>{{ cours.trainer}}</b>
             </p>
 
             <p class="timeline">
               <span class="section-title">Course Timeline</span><br>
-              Start Date : {{ course.startDate }} <br>
-              End Date : {{ course.endDate }}
+              Start Date : {{ cours.startdate }} <br>
+              End Date : {{ cours. enddate }}
             </p>
           </div>
         </div>

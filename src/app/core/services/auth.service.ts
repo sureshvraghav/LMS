@@ -98,5 +98,5 @@ getrole() {
         Authorization: `Bearer ${this.getToken()}`,
       });
     }
-  
+
 }

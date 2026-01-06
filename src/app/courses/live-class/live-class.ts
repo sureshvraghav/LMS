@@ -1,5 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../core/services/auth.service';
+import { Router } from '@angular/router';
+import { liveclass } from '../../core/services/liveclass/liveclass';
+import { ApiService } from '../../core/services/api.service';
 
 @Component({
   selector: 'app-live-class',
@@ -8,7 +12,18 @@ import { Component } from '@angular/core';
   templateUrl: './live-class.html',
   styleUrl: './live-class.scss',
 })
-export class LiveClass {
+export class LiveClass 
+ {
+
+   
+ 
+    constructor(
+    private liveservice: liveclass,
+    private router: Router,
+    private api:ApiService
+  ) {}
+
+   
   liveClasses = [
     {
       title: 'CAPM® - Arabic Course - Module 1',
