@@ -12,7 +12,6 @@ export class ApiService {
    private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('authToken');
     if (token) {
-    
       return new HttpHeaders({
         'Authorization': `Bearer ${token}`
       });
@@ -21,9 +20,7 @@ export class ApiService {
   }
 
    get(url: string, options: any = {}): Observable<any> {
-   
     const headers = this.getAuthHeaders();
-
     return this.http.get<any>(`${this.baseUrl}/${url}`, { ...options, headers });
   }
 

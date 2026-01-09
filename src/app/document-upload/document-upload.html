@@ -1,0 +1,375 @@
+  <div class="courses-header">
+    <h2>Document Library</h2>
+
+    <div class="tabs">
+      <span (click)="activeTab='active'" [class.active]="activeTab==='active'">
+        Active Courses Library <b>2</b>
+      </span>
+      <span (click)="activeTab='document'" [class.active]="activeTab==='document'">
+        Document Upload Pendings <b>3</b>
+      </span>
+      <span (click)="activeTab='recording'" [class.active]="activeTab==='recording'">
+        Recording Sessions <b>11</b>
+      </span>
+         <span (click)="activeTab='CCourse'" [class.active]="activeTab==='CCourse'">
+        Completed Course Library <b>7</b>
+      </span>
+    </div>
+  </div>
+
+    <div class="btn-tabs">
+    <button (click)="activeTab1='course-1'" [class.active]="activeTab1==='course-1'">
+      CAPM® Certification Training 1
+    </button>
+
+    <button (click)="activeTab1='course-2'" [class.active]="activeTab1==='course-2'">
+      CAPM® Certification Training 2
+    </button>
+  </div>
+
+  <div *ngIf="activeTab === 'active'">
+
+
+
+  <div class="file-table-container">
+
+    <!-- HEADER -->
+    <div class="table-header">
+      <div class="header-left">
+        <h3>All Files</h3>
+      </div>
+
+      <div class="header-right">
+       <div class="icons">
+
+  <!-- ALL -->
+  <span
+    class="filter"
+    [class.active]="selectedFileType==='all'"
+    (click)="setFileFilter('all')"
+  >
+    All
+  </span>
+
+  <!-- PDF -->
+  <img
+    src="/pdf.png"
+    [class.active-icon]="selectedFileType==='pdf'"
+    (click)="setFileFilter('pdf')"
+  >
+
+  <!-- XLS -->
+  <img
+    src="/xls.png"
+    [class.active-icon]="selectedFileType==='xls'"
+    (click)="setFileFilter('xls')"
+  >
+
+  <!-- DOC -->
+  <img
+    src="/doc.png"
+    [class.active-icon]="selectedFileType==='doc'"
+    (click)="setFileFilter('doc')"
+  >
+
+  <!-- PPT -->
+  <img
+    src="/ppt.png"
+    [class.active-icon]="selectedFileType==='ppt'"
+    (click)="setFileFilter('ppt')"
+  >
+
+</div>
+
+
+        <input class="search" type="text" placeholder="Search Document">
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <table class="file-table">
+      <thead>
+        <tr>
+          <th>File Name</th>
+          <th>Batch Number</th>
+          <th>Upload Date</th>
+          <th>File Size</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <!-- FILTERED FILES -->
+        <tr *ngFor="let file of filteredFiles">
+          <td>
+            <div class="file-cell">
+              <img [src]="getFileIcon(file.name)">
+              <span>{{ file.name }}</span>
+            </div>
+          </td>
+
+          <td>{{ file.uploadedBy }}</td>
+          <td>{{ file.date }}</td>
+          <td>{{ file.size }}</td>
+
+          <td>
+            <button class="download-btn">Download</button>
+          </td>
+        </tr>
+
+        <!-- EMPTY -->
+        <tr *ngIf="filteredFiles.length === 0">
+          <td colspan="5" class="empty-state">No files found</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <div class="table-footer">
+      <div>
+        Show
+        <select>
+          <option>10</option>
+          <option>20</option>
+        </select>
+        Row
+      </div>
+
+      <div class="pagination">
+        <button>‹</button>
+        <button class="active">1</button>
+        <button>2</button>
+        <button>3</button>
+        <span>...</span>
+        <button>10</button>
+        <button>›</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div *ngIf="activeTab === 'document'">
+    
+    <div class="session-container">
+
+
+      <div class="session-card">
+
+    <div class="left">
+      <img src="/course.jpg" class="thumb" alt="course">
+
+      <div class="info">
+        <h3>CAPM® - Arabic Course - Module 1 Batch 1</h3>
+
+        <div class="meta">
+          <span class="m"><i class="fa-regular fa-clock"></i> 01-01-2026, 09:30 am</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 3 hrs</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 12 Students</span>
+          <span class="m"><i class="fa fa-tasks"></i> Assignments</span>
+        </div>
+
+        <!-- <span class="badge-complete">Live</span> -->
+
+      </div>
+    </div>
+
+    <div class="right">
+      <button class="btn-complete">Mark As Complete</button>
+    </div>
+
+  </div>
+   <div class="session-card">
+
+    <div class="left">
+      <img src="/course.jpg" class="thumb" alt="course">
+
+      <div class="info">
+        <h3>CAPM® - Arabic Course - Module 1 Batch 1</h3>
+
+        <div class="meta">
+          <span class="m"><i class="fa-regular fa-clock"></i> 01-01-2026, 09:30 am</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 3 hrs</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 12 Students</span>
+          <span class="m"><i class="fa fa-tasks"></i> Assignments</span>
+        </div>
+
+        <!-- <span class="badge-complete">Live</span> -->
+
+      </div>
+    </div>
+
+    <div class="right">
+      <button class="btn-complete">Mark As Complete</button>
+    </div>
+
+  </div>
+   <div class="session-card">
+
+    <div class="left">
+      <img src="/course.jpg" class="thumb" alt="course">
+
+      <div class="info">
+        <h3>CAPM® - Arabic Course - Module 1 Batch 1</h3>
+
+        <div class="meta">
+          <span class="m"><i class="fa-regular fa-clock"></i> 01-01-2026, 09:30 am</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 3 hrs</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 12 Students</span>
+          <span class="m"><i class="fa fa-tasks"></i> Assignments</span>
+        </div>
+
+        <!-- <span class="badge-complete">Live</span> -->
+
+      </div>
+    </div>
+
+    <div class="right">
+      <button class="btn-complete">Mark As Complete</button>
+    </div>
+
+  </div>
+   <div class="session-card">
+
+    <div class="left">
+      <img src="/course.jpg" class="thumb" alt="course">
+
+      <div class="info">
+        <h3>CAPM® - Arabic Course - Module 1 Batch 1</h3>
+
+        <div class="meta">
+          <span class="m"><i class="fa-regular fa-clock"></i> 01-01-2026, 09:30 am</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 3 hrs</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 12 Students</span>
+          <span class="m"><i class="fa fa-tasks"></i> Assignments</span>
+        </div>
+
+        <!-- <span class="badge-complete">Live</span> -->
+
+      </div>
+    </div>
+
+    <div class="right">
+      <button class="btn-complete">Mark As Complete</button>
+    </div>
+
+  </div>
+  </div>
+</div>
+
+<div *ngIf="activeTab === 'recording'">
+        <div class="btn-tabs-batch">
+    <button (click)="activeTab2='batch-1'" [class.active]="activeTab2==='batch-1'">
+      Batch 1
+    </button>
+
+    <button (click)="activeTab2='batch-2'" [class.active]="activeTab2==='batch-2'">
+      Batch 2
+    </button>
+
+     <button (click)="activeTab2='batch-3'" [class.active]="activeTab2==='batch-3'">
+      Batch 3
+    </button>
+  </div>
+  <div class="quiz-page-container">
+
+  <div class="table-card">
+
+    <div class="table-header">
+      <h2>Quiz Management</h2>
+    </div>
+
+    
+
+    <table class="quiz-table">
+
+      <thead>
+        <tr>
+          <th>Module Name</th>
+          <th>File Name</th>
+          <th>Uploaded Date</th>
+          <th>File Size</th>
+          <th>Quiz Completion %</th>
+          
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td class="module">Module 6</td>
+          <td></td>
+          <td></td>
+          <td></td>
+         
+          <td class="right">
+            <button class="btn-outline">Add Recording</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="module">Module 5</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        
+          <td class="right">
+            <button class="btn-outline">Add Recording</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="module">Module 4</td>
+          <td>Module 4 Recording.mp4</td>
+          <td>01-01-2026</td>
+          <td>45.22 MB</td>
+      
+          <td class="right">
+            <button class="btn-primary">View Recording</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="module">Module 3</td>
+          <td>Module 3 Recording.mp4</td>
+          <td>01-01-2026</td>
+          <td>45.22 MB</td>
+          
+          <td class="right">
+            <button class="btn-primary">View Recording</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="module">Module 2</td>
+          <td>Module 2 Recording.mp4</td>
+          <td>01-01-2026</td>
+          <td>45.22 MB</td>
+          
+          <td class="right">
+            <button class="btn-primary">View Recording</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="module">Module 1</td>
+          <td>Module 1 Recording.mp4</td>
+          <td>01-01-2026</td>
+          <td>45.22 MB</td>
+         
+          <td class="right">
+            <button class="btn-primary">View Recording</button>
+          </td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+  
+</div>

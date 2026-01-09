@@ -15,7 +15,7 @@ export class Layout implements OnInit {
 username: string = '';
   
  user = {
-    name: 'Dharshan',
+    name: 'Abishek',
     greeting: 'Good Morning',
     notifications: 2,
     avatar: '/user.jpg'

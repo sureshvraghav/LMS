@@ -3,7 +3,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  // font-family: "Inter", sans-serif;
 }
 
 .page {
@@ -46,7 +46,7 @@
   position: relative;
   z-index: 2;
   width: 950px;            
-  height: auto;
+  height: 580PX;
   margin: auto;
   top: 50%;
   transform: translateY(-50%);
