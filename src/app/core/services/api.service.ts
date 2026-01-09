@@ -11,8 +11,6 @@ export class ApiService {
   constructor(private http: HttpClient) {}
    private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('authToken');
-     console.log(token)
-     console.log("gowtham")
     if (token) {
     
       return new HttpHeaders({

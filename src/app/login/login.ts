@@ -2,7 +2,7 @@ import { AuthService } from './../core/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 interface User {
   id: string;
   token: string;
@@ -23,7 +23,7 @@ interface LoginResponse {
 @Component({
   selector: 'app-login',
   standalone:true,
-  imports: [RouterModule,FormsModule,CommonModule],
+  imports: [RouterModule,FormsModule,CommonModule,RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
@@ -57,11 +57,11 @@ this.loading=true;
   this.authService.login(this.login.email,this.login.password).subscribe({
     next:(res)=>{
         this.loading = false;
-         console.log("login successfully",res);
+        //  console.log("login successfully",res);
      
         this.message = 'Login Successful';
         setTimeout(() => this.router.navigate(['/dashboard']), 800);
-        console.log('Login successful', res);
+        
     },
     error:(err)=>{
       console.log(err)

@@ -1,6 +1,10 @@
+
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { quizservice } from '../core/services/quiz/quizservice';
+
+
 
 @Component({
   selector: 'app-quiz',
@@ -9,8 +13,9 @@ import { RouterModule } from '@angular/router';
   templateUrl: './quiz.html',
   styleUrl: './quiz.css',
 })
-export class Quiz {
+export class Quiz  {
   activeTab: 'course-1' | 'course-2'  = 'course-1';
+
 
 moduleQuizOverview = [
   {

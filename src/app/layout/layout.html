@@ -61,7 +61,7 @@
       
   <!-- LEFT -->
   <div class="greeting">
-    <h2>Hello {{ user.name }}!</h2>
+    <h2>Hello {{ getUserName() }}!</h2>
     <p>{{ user.greeting }}</p>
   </div>
 
@@ -83,7 +83,7 @@
     <!-- PROFILE -->
     <div class="profile">
       <img [src]="user.avatar" />
-      <span>{{ user.name }}</span>
+      <span (click)="logout()">{{ getUserName() }}</span>
       <i class="fa-solid fa-chevron-down"></i>
     </div>
 

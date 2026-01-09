@@ -5,15 +5,14 @@
     <h4>Upcoming Quizzes</h4>
 
     <div class="question-grid">
-      <span class="answered">01</span>
-      <span class="not-answered">02</span>
-      <span class="answered">03</span>
-      <span class="answered">04</span>
-      <span class="current">05</span>
-
-      <span *ngFor="let i of [].constructor(15)" class="pending">
-        {{ i + 6 }}
-      </span>
+       <span
+    *ngFor="let q of qui; let i = index"
+    class="dot"
+    [ngClass]="getQuestionStatus(i)"
+    (click)="currentIndex = i"
+  >
+    {{ i + 1 }}
+  </span>
     </div>
 
     <div class="legend">
@@ -33,19 +32,28 @@
     </div>
 
     <div class="question-box">
-      <h4>Question {{ currentQuestion }}</h4>
-      <p>{{ question.text }}</p>
+      <h4>Question {{ currentIndex + 1 }}</h4>
+      <p>{{ currentQuestion?.question}}</p>
 
-      <label class="option" *ngFor="let opt of question.options">
-        <input type="radio" name="q" />
-        {{ opt }}
+      <label class="option" *ngFor="let ans of currentQuestion.answers">
+        <input   type="radio"
+      name="q{{ currentIndex }}"
+      [checked]="selectedAnswers[currentIndex] === ans.text"
+      (change)="selectAnswer(ans.text)" />
+       {{ ans.text }}
       </label>
     </div>
 
     <div class="quiz-actions">
-      <button class="prev">Previous</button>
-      <button class="submit">Submit</button>
-      <button class="next">Next</button>
+      <button  class="prev"
+    (click)="prevQuestion()"
+    [disabled]="currentIndex === 0">Previous</button>
+      <button  class="submit"
+    *ngIf="currentIndex === qui.length - 1"
+    (click)="submitQuiz()">Submit</button>
+      <button   class="next"
+    (click)="nextQuestion()"
+    [disabled]="currentIndex === qui.length - 1">Next</button>
     </div>
 
   </main>

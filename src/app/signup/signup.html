@@ -117,10 +117,20 @@
 
         <!-- SUBMIT BUTTON -->
         
-        <button class="login-btn" type="submit" [disabled]="isLoading">
+        <!-- <button class="login-btn" type="submit" [disabled]="isLoading">
           Create Account
-        </button>
-
+        </button> -->
+          <button
+        type="submit"
+        [disabled]="loading"
+        class="login-btn"
+      >
+        <span *ngIf="!loading">Create Account</span>
+        <span *ngIf="loading" class="loader-wrapper">
+          <span class="loader"></span>
+         Creating account...
+        </span>
+      </button>
 
 
       </form>

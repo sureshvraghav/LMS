@@ -33,7 +33,7 @@ export class Signup {
   };
     message: string = '';
     showSuccess = false;
-    isLoading = false;
+    loading = false;
       errorMessage = '';
    constructor(
     
@@ -61,7 +61,7 @@ export class Signup {
         this.showSuccess = false;
       }, 3000);
  
-       this.isLoading = true;
+       this.loading = true;
      const signupPayload = {
       firstname: this.user.firstname,
       lastname: this.user.lastname,
@@ -69,14 +69,14 @@ export class Signup {
       phone: this.user.phone,
       password: this.user.password
     };
-      this.isLoading=true;
+      this.loading=true;
 
      this.httpService.post('users/userdetails', signupPayload).subscribe({
       next: (res) => {
           this.message = 'Registration Successful! Redirecting to login...';
         console.log('Signup success', res);
         this.showSuccess = true;
-        this.isLoading = false;
+        this.loading = false;
 
         setTimeout(() => {
           this.router.navigate(['/login']);
@@ -85,7 +85,7 @@ export class Signup {
       error: (err) => {
         console.error(err);
         // this.errorMessage = 'Signup failed. Please try again.';
-        this.isLoading = false;
+        this.loading = false;
 
            if (err.status === 409) {
           this.message = 'User with this email already exists';

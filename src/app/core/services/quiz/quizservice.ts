@@ -5,11 +5,11 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class liveclass {
-   constructor(private API: ApiService,private http: HttpClient) {}
+export class quizservice {
+  constructor(private API: ApiService,private http: HttpClient) {}
 
-
-    liveclassdata() {
-    return this.API.get('addnewcourses/getallcourses');
+   getquiz() {
+    return this.API.get('question/getallquestion');
     }
+  
 }

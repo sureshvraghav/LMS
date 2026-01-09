@@ -22,9 +22,9 @@ interface ApiResponse<T> {
   content: string;
   modules: string;
   metadata: Metadata[];
-  trainer: 'Mr Jacob Jones',
-  active: false;
-  rating: 6,
+  trainer: string,
+  active: boolean,
+  rating: string,
 }
 
  interface Metadata {
@@ -49,7 +49,7 @@ export class Courses implements OnInit{
    this.liveclass()
   }
  
-  constructor( private liveservice: liveclass,
+   constructor( private liveservice: liveclass,
     private router: Router,
     private api:ApiService){}
   
@@ -57,18 +57,17 @@ export class Courses implements OnInit{
 liveclass()
    {
       console.log("gowtham")
-       this.api.get('addnewcourses/getallcourses').subscribe({
+      //  this.api.get('addnewcourses/getallcourses').subscribe({
+       this.liveservice.liveclassdata().subscribe({
        next:(res:any)=>{
-      // this.courses = res.data;
        this.course = res.data;
         this.loading = false;
         this.loading = false;
-      console.log(res.data);
-    },
-    error:(err)=>{
-       this.error = 'Failed to load courses';
+           },
+         error:(err)=>{
+        this.error = 'Failed to load courses';
         this.loading = false;
-     
+  
     }
   })
 
@@ -78,34 +77,7 @@ liveclass()
   
 }
 
-  courses = [
-    {
-      id: 1,
-      title: 'CAPM® Certification Training',
-      rating: 5,
-      hours: 122,
-      modules: 6,
-      level: 'Beginner',
-      trainer: 'Mr Jacob Jones',
-      startDate: '01-12-2025',
-      endDate: '15-01-2026',
-      image: '/course.jpg',
-      active: true
-    },
-    {
-      id: 2,
-      title: 'CAPM® Certification Training',
-      rating: 5,
-      hours: 122,
-      modules: 6,
-      level: 'Beginner',
-      trainer: 'Mr Jacob Jones',
-      startDate: '01-12-2025',
-      endDate: '15-01-2026',
-      image: '/course.jpg',
-      active: false
-    }
-  ];
+  
 completedCourses = [
   {
     title: 'CAPM® Certification Training',

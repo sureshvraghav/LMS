@@ -9,11 +9,15 @@ import { QuizPage } from './quiz/quiz-page/quiz-page';
 import { Certificate } from './certificate/certificate';
 import { Attendance } from './attendance/attendance';
 import { Library } from './library/library';
+import { ForgotPassword } from './login/forgot-password/forgot-password';
+import { NewPassword } from './login/forgot-password/new-password/new-password';
 
 export const routes: Routes = [
    { path: '', redirectTo: 'login', pathMatch: 'full' },
    { path: 'login', component: Login },
    { path: 'signup', component: Signup },
+   { path: 'forgot-password', component: ForgotPassword },
+  { path: 'new-password', component: NewPassword },
     {
     path: '',
     component: Layout,

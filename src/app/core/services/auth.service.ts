@@ -10,9 +10,9 @@ interface LoginResponse {
   data: {
     token: string;
     id: string;
-    user: string;
+    firstname: string;
     role: string;
-    useremail: string;
+    email: string;
   };
 }
 @Injectable({ providedIn: 'root' })
@@ -60,11 +60,11 @@ getrole() {
             if (res.data.role) {
               localStorage.setItem(this.roleKey, res.data.role);
             }
-            if (res.data.user) {
-              localStorage.setItem(this.userKey, res.data.user);
+            if (res.data.firstname) {
+              localStorage.setItem(this.userKey, res.data.firstname);
             }
-            if (res.data.useremail) {
-              localStorage.setItem(this.emailKey, res.data.useremail);
+            if (res.data.email) {
+              localStorage.setItem(this.emailKey, res.data.email);
             }
           }
         })
@@ -87,11 +87,13 @@ getrole() {
     }
     return null;
   }
-   getCurrentUser(): void {
+   getCurrentUser():string| null {
     if (typeof window !== 'undefined' && window.localStorage) {
       const user = localStorage.getItem(this.userKey);
-      // return user ? JSON.parse(user) : null;
+      
+      return localStorage.getItem(this.userKey);
     }
+    return null;
   }
    getAuthHeaders(): HttpHeaders {
       return new HttpHeaders({
