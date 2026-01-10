@@ -1,0 +1,417 @@
+  <div class="completion-top-container">
+  <div class="courses-header">
+    <h2>Course Completion</h2>
+
+    <div class="tabs">
+      <span (click)="activeTab='active'" [class.active]="activeTab==='active'">
+        Active Courses <b>2</b>
+      </span>
+      <span (click)="activeTab='completed'" [class.active]="activeTab==='completed'">
+        Completed Courses <b>3</b>
+      </span>
+      
+    </div>
+  </div>
+
+<!-- Active course card -->
+<div class="active-course-container"  *ngIf="activeTab==='active'">
+    <div class="completed-wrapper">
+
+      <div class="completed-grid">
+
+        <div
+          class="completed-card"
+          *ngFor="let c of completedCourses; let i = index"
+          [class.active]="i === 0">
+
+          <img [src]="c.image" />
+
+          <div class="card-body">
+            <h3>{{ c.title }}</h3>
+
+            <p class="meta">
+              {{ c.timeline }}
+            </p>
+
+            <p class="timeline">
+              Total Batches: {{c.totalBatches}} <br>
+              Start Date : {{ c.startDate }}<br>
+              End Date : {{ c.endDate }}
+            </p>
+           <p class="meta">
+            Course Completion %  
+           </p>
+             
+    <div class="progress-bar">
+  <span [style.width.%]="c.progress"></span>
+</div>
+
+          </div>
+
+        </div>
+
+       
+
+      </div>
+
+    </div>
+
+    <!-- Active course table -->
+     <div class="session-container">
+
+  <!-- ===== REPEATING SESSION CARD ===== -->
+  <div class="session-card">
+
+    <div class="left">
+      <img src="/course.jpg" class="thumb" alt="course">
+
+      <div class="info">
+        <h3>CAPM® - Arabic Course - Module 2 Batch 1</h3>
+
+        <div class="meta">
+          <span class="m"><i class="fa-regular fa-clock"></i> 02-01-2026, 09:30 am</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 3 hrs</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 12 Students</span>
+          <span class="m"><i class="fa fa-tasks"></i> Assignments</span>
+        </div>
+
+        <!-- <div class="inline">
+          <span class="badge-dark">Start Now</span>
+          <span class="status-live">Live</span>
+        </div> -->
+
+      </div>
+    </div>
+
+    <div class="right">
+      <button class="btn-action">Start Now</button>
+      <span class="tag-live">Live</span>
+    </div>
+
+  </div>
+  <!-- ===== END CARD ===== -->
+
+
+
+  <div class="session-card">
+
+    <div class="left">
+      <img src="/course.jpg" class="thumb" alt="course">
+
+      <div class="info">
+        <h3>CAPM® - Arabic Course - Module 2 Batch 2</h3>
+
+        <div class="meta">
+          <span class="m"><i class="fa-regular fa-clock"></i> 02-01-2026, 01:30 pm</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 3 hrs</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 12 Students</span>
+          <span class="m"><i class="fa fa-tasks"></i> Assignments</span>
+        </div>
+
+        <!-- <span class="badge-start">Starts In</span>
+        <div class="timer-orange">05:32:23</div> -->
+
+      </div>
+    </div>
+
+    <div class="right">
+      <button class="btn-soon">Starts In</button>
+      <span class="time-tag">05:32:23</span>
+    </div>
+
+  </div>
+
+
+
+  <div class="session-card">
+
+    <div class="left">
+      <img src="/course.jpg" class="thumb" alt="course">
+
+      <div class="info">
+        <h3>CAPM® - Arabic Course - Module 2 Batch 3</h3>
+
+        <div class="meta">
+          <span class="m"><i class="fa-regular fa-clock"></i> 03-01-2026, 09:30 am</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 3 hrs</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 12 Students</span>
+          <span class="m"><i class="fa fa-tasks"></i> Assignments</span>
+        </div>
+
+        <!-- <span class="badge-start">Starts In</span>
+        <div class="timer">23:00:32</div> -->
+
+      </div>
+    </div>
+
+    <div class="right">
+      <button class="btn-soon">Starts In</button>
+      <span class="time-tag">05:32:23</span>
+    </div>
+
+  </div>
+
+
+
+  <div class="session-card">
+
+    <div class="left">
+      <img src="/course.jpg" class="thumb" alt="course">
+
+      <div class="info">
+        <h3>CAPM® - Arabic Course - Module 1 Batch 1</h3>
+
+        <div class="meta">
+          <span class="m"><i class="fa-regular fa-clock"></i> 01-01-2026, 09:30 am</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 3 hrs</span>
+          <span class="m"><i class="fa-regular fa-clock"></i> 12 Students</span>
+          <span class="m"><i class="fa fa-tasks"></i> Assignments</span>
+        </div>
+
+        <!-- <span class="badge-complete">Live</span> -->
+
+      </div>
+    </div>
+
+    <div class="right">
+      <button class="btn-complete" (click)="openCompletionModal()">
+  Mark As Complete
+</button>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+<!-- bottom-table -->
+    <div class="batch-table-container">
+
+  <h2 class="header-title">Batch Details</h2>
+
+  <table class="batch-table">
+
+    <thead>
+      <tr>
+        <th>Batch Number</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Total Students</th>
+        <th>Completion %</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td class="course-name">
+          <i class="fa-solid fa-graduation-cap"></i>
+          CAPM® Certification Training Batch 1
+        </td>
+
+        <td>26-12-2025</td>
+        <td>26-01-2026</td>
+        <td>12</td>
+
+        <td class="green">65%</td>
+
+        <td>
+          <span class="status inprogress">In Progress</span>
+        </td>
+      </tr>
+
+
+
+      <tr>
+        <td class="course-name">
+          <i class="fa-solid fa-graduation-cap"></i>
+          CAPM® Certification Training Batch 2
+        </td>
+
+        <td>26-12-2025</td>
+        <td>26-01-2026</td>
+        <td>12</td>
+
+        <td class="green-light">55%</td>
+
+        <td>
+          <span class="status inprogress">In Progress</span>
+        </td>
+      </tr>
+
+
+
+      <tr>
+        <td class="course-name">
+          <i class="fa-solid fa-graduation-cap"></i>
+          CAPM® Certification Training Batch 3
+        </td>
+
+        <td>26-12-2025</td>
+        <td>26-01-2026</td>
+        <td>12</td>
+
+        <td class="green-dim">45%</td>
+
+        <td>
+          <span class="status inprogress">In Progress</span>
+        </td>
+      </tr>
+
+    </tbody>
+
+  </table>
+</div>
+   </div>
+<!-- completed course section -->
+      <div class="completed-course-wrapper" *ngIf="activeTab==='completed'">
+      <div class="completed-wrapper" >
+        
+      <div class="completed-grid">
+
+        <div
+          class="completed-card"
+          *ngFor="let c of completedCourses; let i = index"
+          [class.active]="i === 0">
+
+          <img [src]="c.image" />
+
+          <div class="card-body">
+            <h3>{{ c.title }}</h3>
+
+            <p class="meta">
+              {{ c.timeline }}
+            </p>
+
+            <p class="timeline">
+              Total Batches: {{c.totalBatches}} <br>
+              Start Date : {{ c.startDate }}<br>
+              End Date : {{ c.endDate }}
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="batch-table-container">
+
+  <h2 class="header-title">Batch Details</h2>
+
+  <table class="batch-table">
+
+    <thead>
+      <tr>
+        <th>Batch Number</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Total Students</th>
+        <th>Completion %</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td class="course-name">
+          <i class="fa-solid fa-graduation-cap"></i>
+          CAPM® Certification Training Batch 1
+        </td>
+
+        <td>26-12-2025</td>
+        <td>26-01-2026</td>
+        <td>12</td>
+
+        <td class="green">65%</td>
+
+        <td>
+          <span class="status inprogress">In Progress</span>
+        </td>
+      </tr>
+
+
+
+      <tr>
+        <td class="course-name">
+          <i class="fa-solid fa-graduation-cap"></i>
+          CAPM® Certification Training Batch 2
+        </td>
+
+        <td>26-12-2025</td>
+        <td>26-01-2026</td>
+        <td>12</td>
+
+        <td class="green-light">55%</td>
+
+        <td>
+          <span class="status inprogress">In Progress</span>
+        </td>
+      </tr>
+
+
+
+      <tr>
+        <td class="course-name">
+          <i class="fa-solid fa-graduation-cap"></i>
+          CAPM® Certification Training Batch 3
+        </td>
+
+        <td>26-12-2025</td>
+        <td>26-01-2026</td>
+        <td>12</td>
+
+        <td class="green-dim">45%</td>
+
+        <td>
+          <span class="status inprogress">In Progress</span>
+        </td>
+      </tr>
+
+    </tbody>
+
+  </table>
+</div>
+</div>
+</div>
+
+  <!-- BACKDROP -->
+<div class="modal-backdrop" *ngIf="showCompletionModal" (click)="closeCompletionModal()"></div>
+
+<!-- MODAL -->
+<div class="completion-modal" *ngIf="showCompletionModal">
+  <div class="modal-header">
+    <h3>Course Completion</h3>
+    <span class="close" (click)="closeCompletionModal()">×</span>
+  </div>
+
+  <hr />
+
+  <label class="attach-label">Attach Document:</label>
+
+  <!-- Upload Box -->
+  <div class="upload-box">
+    <div class="upload-icon">📤</div>
+    <p><span>Click here</span> to upload or drop files here</p>
+  </div>
+
+  <!-- Uploaded Files -->
+  <div class="uploaded-files">
+    <div class="file">
+      Module 1.pdf <span>• Preview</span> <small>5.7MB</small> ✕
+    </div>
+    <div class="file">
+      Module 1.mp4 <span>• Preview</span> <small>10.1MB</small> ✕
+    </div>
+  </div>
+
+  <!-- Footer Button -->
+  <button class="modal-submit">
+    Mark As Complete
+  </button>
+</div>

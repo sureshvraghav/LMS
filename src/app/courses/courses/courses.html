@@ -1,0 +1,250 @@
+<div class="courses-page">
+
+  <!-- HEADER -->
+  <div class="courses-header">
+    <h2>My Courses</h2>
+
+    <div class="tabs">
+      <span (click)="activeTab='active'" [class.active]="activeTab==='active'">
+        Active Courses <b>2</b>
+      </span>
+      <span (click)="activeTab='completed'" [class.active]="activeTab==='completed'">
+        Completed Courses <b>3</b>
+      </span>
+      <span (click)="activeTab='similar'" [class.active]="activeTab==='similar'">
+        Similar Courses <b>11</b>
+      </span>
+    </div>
+  </div>
+
+  <!-- ================= ACTIVE COURSES ================= -->
+  <div *ngIf="activeTab === 'active'">
+
+    <div class="courses-layout">
+
+      <!-- LEFT -->
+      <div class="courses-list">
+        <div class="course-card"
+             *ngFor="let course of courses"
+             [class.active]="course.active">
+
+          <img [src]="course.image" />
+
+          <div class="course-info">
+            <h3>{{ course.title }}</h3>
+
+            <div class="stars">
+              <i class="fa-solid fa-star" *ngFor="let s of [].constructor(course.rating)"></i>
+            </div>
+
+            <p class="meta">
+              {{ course.hours }} Total Hours · {{ course.modules }} Modules · {{ course.level }}
+            </p>
+
+            <p class="trainer">
+              <span class="section-title">Trainer Details</span><br>
+              <b>{{ course.trainer }}</b>
+            </p>
+
+            <p class="timeline">
+              <span class="section-title">Course Timeline</span><br>
+              Start Date : {{ course.startDate }} <br>
+              End Date : {{ course.endDate }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="activity">
+        <h3>Upcoming Sessions</h3>
+
+        <div class="activity-item" *ngFor="let s of upcomingSessions">
+          <div class="date-box">
+            <span class="day">{{ s.day }}</span>
+            <span class="month">{{ s.month }}</span>
+          </div>
+
+          <div class="activity-info">
+            <p class="title">{{ s.title }}</p>
+            <div class="meta">
+              <span>{{ s.date }}, {{ s.time }}</span>
+              <span>{{ s.duration }}</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="mt">Upcoming Quiz</h3>
+
+        <div class="activity-item" *ngFor="let q of upcomingQuiz">
+          <div class="date-box dark">
+            <span class="day">{{ q.day }}</span>
+            <span class="month">{{ q.month }}</span>
+          </div>
+
+          <div class="activity-info">
+            <p class="title">{{ q.title }}</p>
+            <div class="meta">
+              <span>{{ q.date }}, {{ q.time }}</span>
+              <span>{{ q.duration }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- REPORT -->
+    <div class="report-card">
+      <h3 class="report-title">Overall Course Report</h3>
+
+      <div class="report-header">
+        <span>Course Name</span>
+        <span>Trainer Name</span>
+        <span>Start Date</span>
+        <span>End Date</span>
+        <span>Status</span>
+      </div>
+
+      <div class="report-row" *ngFor="let item of reports">
+        <div class="course-cell">
+          <img [src]="item.courseImage" />
+          <span>{{ item.courseName }}</span>
+        </div>
+        <div class="trainer-cell">
+          <img [src]="item.trainerAvatar" />
+          <span>{{ item.trainer }}</span>
+        </div>
+        <span>{{ item.startDate }}</span>
+        <span>{{ item.endDate }}</span>
+        <span class="status in-progress">{{ item.status }}</span>
+      </div>
+    </div>
+
+    <app-live-class></app-live-class>
+  </div>
+
+  <!-- ================= COMPLETED COURSES ================= -->
+<div *ngIf="activeTab === 'completed'">
+
+  <div class="certificate-section-card">
+    <div class="completed-wrapper">
+
+      <div class="completed-grid">
+
+        <div
+          class="completed-card"
+          *ngFor="let c of completedCourses; let i = index"
+          [class.active]="i === 0">
+
+          <img [src]="c.image" />
+
+          <div class="card-body">
+            <h3>{{ c.title }}</h3>
+
+            <p class="meta">
+              {{ c.hours }} Total Hours. {{ c.modules }} Modules. {{ c.level }}
+            </p>
+
+            <p class="timeline">
+              <span class="section-title">Course Timeline</span><br>
+              Start Date : {{ c.startDate }}<br>
+              End Date : {{ c.endDate }}
+            </p>
+
+            <button class="download-btn">
+              Download Certificate
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ✅ OVERALL MODULE REPORT (BELOW DOWNLOAD CERTIFICATE) -->
+  <div class="module-report-card">
+
+    <h3 class="module-report-title">
+      Overall Module Report - CAPM® Certification Training
+    </h3>
+
+    <!-- TABLE HEADER -->
+    <div class="module-report-header">
+      <span>Module Name</span>
+      <span>Trainer</span>
+      <span>Start Date</span>
+      <span>Time Spent</span>
+      <span>Quiz Evaluation</span>
+      <span>Status</span>
+    </div>
+
+    <!-- TABLE ROWS -->
+    <div class="module-report-row" *ngFor="let m of moduleReports">
+
+      <span class="module-name">{{ m.moduleName }}</span>
+
+      <div class="trainer-cell">
+        <img [src]="m.trainerAvatar" />
+        <span>{{ m.trainer }}</span>
+      </div>
+
+      <span>{{ m.startDate }}</span>
+      <span>{{ m.timeSpent }}</span>
+
+      <span
+        class="quiz-score"
+        [class.good]="m.quizScore >= 60"
+        [class.bad]="m.quizScore < 60">
+        {{ m.quizScore }}%
+      </span>
+
+      <span class="status completed">
+        {{ m.status }}
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
+<!-- ================= SIMILAR  COURSES ================= -->
+<div *ngIf="activeTab === 'similar'">
+
+  <div class="similar-grid">
+
+    <div class="similar-card" *ngFor="let c of similarCourses">
+
+      <img [src]="c.image" />
+
+      <div class="similar-body">
+
+        <h3>{{ c.title }}</h3>
+        <p class="author">By {{ c.author }}</p>
+
+        <div class="rating">
+          <i class="fa-solid fa-star" *ngFor="let s of [].constructor(c.rating)"></i>
+          <span>({{ c.ratingsCount }} Ratings)</span>
+        </div>
+
+        <p class="meta">
+          {{ c.hours }} Total Hours. {{ c.lectures }} Lectures. {{ c.level }}
+        </p>
+
+        <p class="desc">
+          {{ c.description }}
+        </p>
+
+        <button class="view-btn" routerLink="/course-page">View Details</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>

@@ -1,0 +1,53 @@
+<div class="quiz-page">
+
+  <!-- LEFT -->
+  <aside class="quiz-sidebar">
+    <h4>Upcoming Quizzes</h4>
+
+    <div class="question-grid">
+      <span class="answered">01</span>
+      <span class="not-answered">02</span>
+      <span class="answered">03</span>
+      <span class="answered">04</span>
+      <span class="current">05</span>
+
+      <span *ngFor="let i of [].constructor(15)" class="pending">
+        {{ i + 6 }}
+      </span>
+    </div>
+
+    <div class="legend">
+      <p><span class="dot answered"></span> Answered</p>
+      <p><span class="dot not-answered"></span> Not Answered</p>
+      <p><span class="dot current"></span> Current Question</p>
+      <p><span class="dot pending"></span> Yet To Answer</p>
+    </div>
+  </aside>
+
+  <!-- RIGHT -->
+  <main class="quiz-main">
+
+    <div class="quiz-header">
+      <span>CAPM® Certification &gt; Module 4</span>
+      <span class="timer">{{ timeLeft }} <b>X</b></span>
+    </div>
+
+    <div class="question-box">
+      <h4>Question {{ currentQuestion }}</h4>
+      <p>{{ question.text }}</p>
+
+      <label class="option" *ngFor="let opt of question.options">
+        <input type="radio" name="q" />
+        {{ opt }}
+      </label>
+    </div>
+
+    <div class="quiz-actions">
+      <button class="prev">Previous</button>
+      <button class="submit">Submit</button>
+      <button class="next">Next</button>
+    </div>
+
+  </main>
+
+</div>
