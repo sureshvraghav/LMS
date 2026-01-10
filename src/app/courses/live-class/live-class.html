@@ -1,0 +1,73 @@
+<div class="live-layout">
+
+  <!-- LEFT: LIVE CLASSES -->
+  <div class="live-classes-card">
+
+    <h3>Upcoming Live Classes</h3>
+
+    <div class="live-class"
+         *ngFor="let cls of liveClasses"
+         [class.live-now]="cls.live">
+
+      <img [src]="cls.image" />
+
+      <div class="live-info">
+        <h4>{{ cls.title }}</h4>
+
+        <div class="meta">
+          <span><i class="fa-regular fa-clock"></i> {{ cls.date }}, {{ cls.time }}</span>
+          <span><i class="fa-regular fa-clock"></i> {{ cls.duration }}</span>
+          <span *ngIf="cls.assignments">
+            <i class="fa-regular fa-circle-check"></i> Assignments
+          </span>
+        </div>
+      </div>
+
+      <div class="action">
+        <button [class.disabled]="!cls.live">Join</button>
+        <span class="live-text" *ngIf="cls.live">Live Now</span>
+        <span class="countdown" *ngIf="cls.countdown">{{ cls.countdown }}</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- RIGHT: SCHEDULE -->
+  <div class="schedule-card">
+
+    <h3>My Schedule</h3>
+
+    <!-- CALENDAR HEADER -->
+    <div class="calendar-head">
+      <button>&larr;</button>
+      <span>December, 2025</span>
+      <button>&rarr;</button>
+    </div>
+
+    <!-- DAYS -->
+    <div class="days">
+      <span>Su</span><span>Mo</span><span>Tu</span>
+      <span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+    </div>
+
+    <div class="dates">
+      <span>24</span><span>25</span>
+      <span class="active">26</span>
+      <span>27</span><span>28</span><span>29</span><span>30</span>
+    </div>
+
+    <!-- TIMELINE -->
+    <h4>Tuesday, 26 December 2025</h4>
+
+    <div class="timeline">
+      <div class="timeline-item" *ngFor="let item of schedule">
+        <span class="time">{{ item.time }}</span>
+        <span class="line"></span>
+        <span class="text">{{ item.text }}</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
