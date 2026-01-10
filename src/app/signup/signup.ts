@@ -39,7 +39,7 @@ export class Signup {
     
     private authService: AuthService,
     private router: Router,
-      private httpService:ApiService,
+    private httpService:ApiService,
   ) {}
  
  

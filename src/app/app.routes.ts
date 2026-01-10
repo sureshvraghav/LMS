@@ -8,8 +8,7 @@ import { QuizPage } from './quiz/quiz-page/quiz-page';
 import { Certificate } from './certificate/certificate';
 import { Attendance } from './attendance/attendance';
 import { Library } from './library/library';
-import { ForgotPassword } from './login/forgot-password/forgot-password/forgot-password';
-import { NewPassword } from './login/forgot-password/forgot-password/new-password/new-password';
+
 import { Courses } from './courses/courses';
 import { CourseCompletion } from './course-completion/course-completion';
 import { DocumentUpload } from './document-upload/document-upload';
@@ -18,6 +17,8 @@ import { QuizManagement } from './quiz-management/quiz-management/quiz-managemen
 import { CreateQuiz } from './quiz-management/quiz-management/create-quiz/create-quiz';
 import { DashboardT } from './dashboard-t/dashboard-t/dashboard-t';
 import { CoursePage } from './course-page/course-page/course-page';
+import { NewPassword } from './login/forgot-password/new-password/new-password';
+import { ForgotPassword } from './login/forgot-password/forgot-password';
 
 
 export const routes: Routes = [

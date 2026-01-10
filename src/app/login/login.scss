@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  // font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .page {
@@ -55,7 +55,16 @@
   position: relative;
   z-index: 2;
   width: 950px;
-
+  height: 560px;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  background: white;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.18);
+}
 
 /* LEFT */
 .card-left {
@@ -353,34 +362,47 @@ h1 {
 }
 
 @media (max-width: 480px) {
-
-  .card-left {
-    padding: 26px 20px;
-  }
-
+ 
   h1 {
     font-size: 18px;
   }
 
-  .subt {
+  h2 {
     font-size: 15px;
   }
 
   .subtitle {
+    font-size: 11px;
+  }
+
+  .input-field legend {
+    font-size: 11px;
+  }
+
+  .input-field input {
     font-size: 12px;
   }
 
-  .login-btn {
-    font-size: 14px;
-    padding: 12px;
+  .signup {
+    font-size: 11px;
   }
 
-  .divider {
-    margin: 18px 0 14px;
+  .login-btn {
+    font-size: 13px;
+    padding: 11px;
+  }
+
+  .social-btn {
+    height: 34px;
+  }
+
+  .social-btn img {
+    height: 14px;
   }
 }
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
-}}
+}
