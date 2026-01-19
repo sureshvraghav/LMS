@@ -1,0 +1,122 @@
+<div class="page-wrapper">
+
+
+
+  <!-- Card -->
+  <div class="card">
+
+      <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <span>All Batch</span>
+    <span class="arrow">></span>
+    <span class="active">Create New Batch</span>
+  </div>
+
+    <h4 class="card-title">Batch Details</h4>
+
+    <!-- Batch Details -->
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Course Name <span>*</span></label>
+        <input [value]="batch.courseName" disabled />
+      </div>
+
+      <div class="form-group">
+        <label>Batch No <span>*</span></label>
+        <input [value]="batch.batchNo" disabled />
+      </div>
+
+      <div class="form-group">
+        <label>Training Mode <span>*</span></label>
+        <input [value]="batch.trainingMode" disabled />
+      </div>
+
+      <div class="form-group">
+        <label>Max Student Capacity <span>*</span></label>
+        <input [value]="batch.capacity" disabled />
+      </div>
+
+      <div class="form-group">
+        <label>Batch Start Date <span>*</span></label>
+        <input [value]="batch.startDate" disabled />
+      </div>
+
+      <div class="form-group">
+        <label>Batch End Date <span>*</span></label>
+        <input [value]="batch.endDate" disabled />
+      </div>
+
+      <div class="form-group">
+        <label>Primary Trainer <span>*</span></label>
+        <input [value]="batch.primaryTrainer" disabled />
+      </div>
+
+      <div class="form-group">
+        <label>Backup Trainer <span>*</span></label>
+        <input [value]="batch.backupTrainer" disabled />
+      </div>
+
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Create Session -->
+    <h4 class="section-title">Create Session</h4>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button
+        [class.active]="activeTab === 'modules'"
+        (click)="activeTab = 'modules'"
+      >
+        Module Overview
+      </button>
+
+      <button
+        [class.active]="activeTab === 'students'"
+        (click)="activeTab = 'students'"
+      >
+        Students List
+      </button>
+    </div>
+
+    <!-- Module Table -->
+    <table *ngIf="activeTab === 'modules'" class="module-table">
+      <thead>
+        <tr>
+          <th>Module Name</th>
+          <th>Module No</th>
+          <th>Module Duration</th>
+          <th>Total Sessions</th>
+          <th>Session Details</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let m of modules">
+          <td class="link">{{ m.name }}</td>
+          <td>{{ m.no }}</td>
+          <td>{{ m.duration }}</td>
+          <td>{{ m.sessions }}</td>
+          <td class="updated">Updated</td>
+          <td class="actions">
+            <i class="fa-regular fa-pen-to-square"></i>
+            <i class="fa-regular fa-trash-can"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+       <div class="actions-footer">
+      <button class="danger-outline">Deactivate Batch</button>
+
+      <div class="right-actions">
+        <button class="btn-outline">Back</button>
+        <button class="btn-primary">Save Changes</button>
+      </div>
+    </div>
+
+  </div>
+</div>

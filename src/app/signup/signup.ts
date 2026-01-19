@@ -29,7 +29,9 @@ export class Signup {
     phone: '',
     password: '',
     confirmPassword: '',
-    terms: false
+    terms: false,
+    role:"LEARNER"
+
   };
     message: string = '';
     showSuccess = false;
@@ -67,7 +69,8 @@ export class Signup {
       lastname: this.user.lastname,
       email: this.user.email,
       phone: this.user.phone,
-      password: this.user.password
+      password: this.user.password,
+      role:this.user.role
     };
       this.loading=true;
 

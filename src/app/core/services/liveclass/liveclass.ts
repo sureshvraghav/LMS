@@ -12,4 +12,14 @@ export class liveclass {
     liveclassdata() {
     return this.API.get('addnewcourses/getallcourses');
     }
+    addbatchdata(data:any)
+    {
+     return this.API.post('batch/add',data);
+     }
+    getallbatch()
+    {
+      return this.API.get('batch/getallbatch');
+    }
+
+
 }

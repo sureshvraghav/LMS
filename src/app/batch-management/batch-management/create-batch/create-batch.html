@@ -1,0 +1,86 @@
+<form #batchForm="ngForm" (ngSubmit)="createBatch()">
+<div class="page-wrapper">
+
+  <!-- Breadcrumb -->
+ 
+
+  <!-- Card -->
+  <div class="card">
+
+     <div class="breadcrumb">
+    <span>All Batch</span>
+    <span class="arrow">></span>
+    <span class="active">Create New Batch</span>
+  </div>
+
+    <h4 class="card-title">Batch Details</h4>
+
+    <div class="form-grid">
+
+      <!-- Course Name -->
+      <div class="form-group">
+        <label>Course Name <span>*</span></label>
+        <select   name="courseName" [(ngModel)]="batch.course">
+          <option  [ngValue]="null" disabled selected>
+            select course
+            <!-- 1 Month / 3 Months / 6 Months / 12 Months -->
+          </option>
+          <option *ngFor="let c of course"  [ngValue]="c">{{ c.coursename }}</option>
+        </select>
+      </div>
+
+      <!-- Batch No -->
+      <div class="form-group">
+        <label>Batch No <span>*</span></label>
+        <select  name="batchNo" [(ngModel)]="batch.batchNo">
+          <option value="" disabled selected>1 / 2 / 3 / 4 / 5</option>
+          <option *ngFor="let b of batchNos" [value]="b">{{ b }}</option>
+        </select>
+      </div>
+
+      <!-- Training Mode -->
+      <div class="form-group">
+        <label>Training Mode <span>*</span></label>
+        <select   name="trainingMode" [(ngModel)]="batch.trainingMode">
+          <option value="" disabled selected>
+            Online / Recorded Session
+          </option>
+          <option *ngFor="let m of trainingModes" value="m">{{ m }}</option>
+        </select>
+      </div>
+
+      <!-- Capacity -->
+      <div class="form-group">
+        <label>Max Student Capacity <span>*</span></label>
+        <input
+          name="capacity"
+          type="number"
+          name="number"
+          placeholder="Enter Count"
+          [(ngModel)]="batch.capacity"
+        />
+      </div>
+
+      <!-- Start Date -->
+      <div class="form-group">
+        <label>Batch Start Date <span>*</span></label>
+        <input   name="startDate" type="date" [(ngModel)]="batch.startDate" />
+      </div>
+
+      <!-- End Date -->
+      <div class="form-group">
+        <label>Batch End Date <span>*</span></label>
+        <input    name="endDate" type="date" [(ngModel)]="batch.endDate" />
+      </div>
+
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button (click)="goBack()"  class="btn-outline">Back</button>
+      <button class="btn-primary">Create Batch</button>
+    </div>
+
+  </div>
+</div>
+</form>

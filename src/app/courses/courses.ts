@@ -4,6 +4,7 @@ import { LiveClass } from "./live-class/live-class";
 import { liveclass } from '../core/services/liveclass/liveclass';
 import { Router } from '@angular/router';
 import { ApiService } from '../core/services/api.service';
+import { AuthService } from '../core/services/auth.service';
 
 
 
@@ -13,19 +14,31 @@ interface ApiResponse<T> {
   message: string;
   data: T;
 }
- interface Course {
-  title: string;
-  totalhours: string;
-  level: string;
-  startdate: string;
-  enddate: string;
-  content: string;
-  modules: string;
+export interface Course {
+  id: string;
+  trainerId: string;
+ 
+  coursename: string; 
+  coursecategory: string;
+  courselevel: string;
+  certificateavalibility: string;
+  noofmodule: string;
+  rating: string;
+  modules: Module[];
   metadata: Metadata[];
-  trainer: string,
-  active: boolean,
-  rating: string,
 }
+
+export interface Module {
+  moduleId: string;
+  moduleName: string;
+  moduleDescription: string;
+  moduleDuration: string;
+  startDate: string;
+  endDate: string;
+  startTime: string;
+  endTime: string;
+}
+
 
  interface Metadata {
   fileName: string;
@@ -34,6 +47,8 @@ interface ApiResponse<T> {
   height: number;
   fileSizeKB: number;
 }
+
+
 @Component({
   selector: 'app-courses',
   standalone: true,
@@ -46,30 +61,54 @@ export class Courses implements OnInit{
   loading = true;
   error = '';
  ngOnInit(): void {
-   this.liveclass()
+
+   this.liveclass();
+   
   }
  
    constructor( private liveservice: liveclass,
     private router: Router,
-    private api:ApiService){}
+    private api:ApiService,
+  private authService: AuthService){}
+    
   
   activeTab: 'active' | 'completed' | 'similar' = 'active';
 liveclass()
    {
-      console.log("gowtham")
-      //  this.api.get('addnewcourses/getallcourses').subscribe({
-       this.liveservice.liveclassdata().subscribe({
-       next:(res:any)=>{
-       this.course = res.data;
-        this.loading = false;
-        this.loading = false;
-           },
-         error:(err)=>{
-        this.error = 'Failed to load courses';
-        this.loading = false;
+   const userId = this.authService.getUserId();
+   console.log(userId)
+const role = localStorage.getItem('role')
+if (userId && role === 'LEARNER') {
+  this.api.get(`purchase/${userId}/getpurchasedcourses`).subscribe({
+    next: (res: any) => {
+     
+      console.log('Courses  >>>', res.data);
+      this.course = res.data; 
+    },
+    error: (err) => console.error(err)
+  });
+}
+
+
+  // console.log("User ID:", userId);
+  //     //  this.api.get('addnewcourses/getallcourses').subscribe({
+  //      this.liveservice.liveclassdata().subscribe({
+  //      next:(res:any)=>{
+  //       console.log("data>>>>>>>>>>>>>",res.data)
+  //      this.course = res.data;
+  //       this.loading = false;
+  //       this.loading = false;
+  //          }
+  //          ,
+  //        error:(err)=>{
+  //       this.error = 'Failed to load courses';
+  //       this.loading = false;
   
-    }
-  })
+  //   }
+
+
+    
+  // })
 
    
  
@@ -359,3 +398,4 @@ reports = [
 
 
 }
+ 

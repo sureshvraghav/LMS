@@ -42,6 +42,14 @@ moduleQuizOverview = [
     completedDate: '27-12-2025',
     score: 42
   }
+  , {
+    moduleName: 'Module 3',
+    createdBy: 'Leasie Watson',
+    startDate: '26-12-2025',
+    endDate: '28-12-2025',
+    completedDate: '27-12-2025',
+    score: 42
+  }
 ];
 
 // Upcoming Quizzes

@@ -9,7 +9,7 @@ interface LoginResponse {
   message: string;
   data: {
     token: string;
-    id: string;
+    userid: string;
     firstname: string;
     role: string;
     email: string;
@@ -46,16 +46,17 @@ getrole() {
       .pipe(
         tap((res) => {
           console.log('Login response:', res);
-    
+          console.log(this.getUserId());
+
           if (res && res.data) {
             console.log('Login data:', res.data);
-
+   
             if (res.data.token) {
               localStorage.setItem(this.tokenKey, res.data.token);
           
             }
-            if (res.data.id) {
-              localStorage.setItem(this.idKey, res.data.id);
+            if (res.data.userid) {
+              localStorage.setItem(this.idKey, res.data.userid);
             }
             if (res.data.role) {
               localStorage.setItem(this.roleKey, res.data.role);
@@ -79,7 +80,9 @@ getrole() {
       localStorage.removeItem(this.emailKey);
     }
   }
-
+ isAuthenticated(): boolean {
+    return !!this.getToken();
+  }
     getToken(): string | null{
     if (typeof window !== 'undefined' && window.localStorage) {
       var token=localStorage.getItem(this.tokenKey)

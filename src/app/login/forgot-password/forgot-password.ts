@@ -67,7 +67,7 @@ forgotemail={
         console.log(res)
         console.log("email",res.data);
      
-        this.message = 'verified you email';
+        this.message = 'We have sent an email to reset your password.';
          if (res.data) {
               localStorage.setItem(this.emailupdate, res.data);
             }
@@ -75,7 +75,7 @@ forgotemail={
             console.log(res.data)
         if(res.status===201)
         {
-            setTimeout(() => this.router.navigate(['/new-password']), 800);
+            // setTimeout(() => this.router.navigate(['/new-password']), 800);
         }
         
         

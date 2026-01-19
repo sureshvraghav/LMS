@@ -38,5 +38,14 @@ export class ApiService {
     const headers = this.getAuthHeaders();
     return this.http.delete<any>(`${this.baseUrl}/${url}`, { ...options, headers });
   }
+
+patch(url: string, body: any, options: any = {}): Observable<any> {
+  const headers = this.getAuthHeaders();
+  return this.http.patch<any>(
+    `${this.baseUrl}/${url}`,
+    body,
+    { ...options, headers }
+  );}
+  
 }
 

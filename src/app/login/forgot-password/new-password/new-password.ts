@@ -59,8 +59,10 @@ showPassword = false;
      
         console.log("apihitting")
         this.loading = false;
+         
+        this.message='password updated successfully';
         console.log("email",res);
-      setTimeout(() => this.router.navigate(['/login']), 800);
+         setTimeout(() => this.router.navigate(['/login']), 800);
         // this.message = 'verified you email';
          if (res.data.email) {
               localStorage.setItem(this.email, res.data);
@@ -79,7 +81,7 @@ showPassword = false;
         {
           console.log("")
           this.message="password reset successfully"
-            setTimeout(() => this.router.navigate(['/login']), 800);
+            setTimeout(() => this.router.navigate(['/']), 800);
         }
         
         

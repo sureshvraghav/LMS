@@ -2,7 +2,7 @@ import { AuthService } from './../core/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 interface User {
   id: string;
   token: string;
@@ -42,9 +42,27 @@ login={
 }
    constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+     private route:ActivatedRoute
   ) {}
-  
+    // ngOnInit():void{
+    //   if(this.authService.isAuthenticated())
+    //   {
+    //     this.route.queryParams.subscribe((params:any)=>{
+    //       const redirecturl=params['returnUrl']
+    //       if(redirecturl)
+    //       {
+    //         this.router.navigate([redirecturl], { replaceUrl: true });
+    //       }
+    //     })
+    //     const currenturl=this.router.url;
+    //    if(currenturl=='/'||currenturl=='/login')
+    //    {
+    //      this.router.navigate(['/'], { replaceUrl: true });
+    //    }
+        
+    //   }
+    // }
 onSubmit()
 {
   console.log("sucess")

@@ -28,7 +28,7 @@
       <div class="courses-list">
         <div class="course-card"
              *ngFor="let cours of course"
-             [class.active]="cours.active">
+             >
 
           <!-- <img [src]="course.image" /> -->
              <img
@@ -37,30 +37,39 @@
         alt="Cours Image"
       />
           <div class="course-info">
-            <h3>{{ cours.title }}</h3>
+           
+            <h3>{{ cours.coursename }}</h3>
 
             <div class="stars">
               <i class="fa-solid fa-star" *ngFor="let s of [].constructor(cours.rating)"></i>
             </div>
 
             <p class="meta">
-              {{ cours.totalhours }} Total Hours · {{ cours.modules }} Modules · {{ cours.level }}
+             {{ cours.coursecategory }} ·
+        {{ cours.modules?.length }} Modules ·
+        {{ cours.courselevel }}
             </p>
 
             <p class="trainer">
-              <span class="section-title">Trainer Details</span><br>
-              <b>{{ cours.trainer}}</b>
+              <span class="section-title">Trainer Details</span>
+
+              <b>{{ cours.trainerId}}</b>
             </p>
 
             <p class="timeline">
-              <span class="section-title">Course Timeline</span><br>
-              Start Date : {{ cours.startdate }} <br>
-              End Date : {{ cours. enddate }}
+              <span class="section-title">Course Timeline</span>
+
+              Start Date :  {{ cours.modules[0]?.startDate }} 
+
+              End Date : {{ cours.modules[0]?.endDate }}
+              
             </p>
           </div>
         </div>
       </div>
 
+      
+      
       <!-- RIGHT -->
       <div class="activity">
         <h3>Upcoming Sessions</h3>
@@ -153,8 +162,10 @@
             </p>
 
             <p class="timeline">
-              <span class="section-title">Course Timeline</span><br>
-              Start Date : {{ c.startDate }}<br>
+              <span class="section-title">Course Timeline</span>
+
+              Start Date : {{ c.startDate }}
+
               End Date : {{ c.endDate }}
             </p>
 

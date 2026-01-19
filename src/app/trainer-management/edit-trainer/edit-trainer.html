@@ -1,0 +1,160 @@
+<div class="form-page">
+
+  <!-- HEADER -->
+  <h2 class="breadcrumb">
+    Trainer Overview &gt; <span>Add New Trainer</span>
+  </h2>
+
+  <!-- PERSONAL DETAILS -->
+  <h3 class="section-title">Personal Details</h3>
+
+  <div class="photo-upload">
+    <label>Trainer Photo *</label>
+    <div class="photo-box">
+      <i class="fa-solid fa-camera"></i>
+    </div>
+  </div>
+
+  <div class="form-grid">
+
+    <div>
+      <label>Trainer ID *</label>
+      <input type="text" [value]="trainer.trainerid" disabled />
+    </div>
+
+    <div>
+      <label>Trainer Name *</label>
+      <input type="text" placeholder="Enter Trainer Name" [(ngModel)]="trainer.trainername" />
+    </div>
+
+    <div>
+      <label>Personal Email ID *</label>
+      <input type="email" placeholder="Enter Email ID" [(ngModel)]="trainer.personalemailid" />
+    </div>
+
+    <div>
+      <label>Contact No *</label>
+      <input type="text" placeholder="Enter Contact No" [(ngModel)]="trainer.contactnumber" />
+    </div>
+
+    <div>
+      <label>Date Of Birth *</label>
+      <input type="date" [(ngModel)]="trainer.dateofbirth" />
+    </div>
+
+    <div>
+      <label>Full Address *</label>
+      <input type="text" placeholder="Enter Full Address" [(ngModel)]="trainer.address" />
+    </div>
+
+    <div>
+      <label>State *</label>
+      <select [(ngModel)]="trainer.state">
+        <option value="">Select State</option>
+        <option>Tamil Nadu</option>
+        <option>Kerala</option>
+      </select>
+    </div>
+
+    <div>
+      <label>City *</label>
+      <select [(ngModel)]="trainer.city">
+        <option value="">Select City</option>
+        <option>Chennai</option>
+        <option>Madurai</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Login Email *</label>
+      <input type="email" placeholder="Enter Login Email" [(ngModel)]="trainer.loginemail" />
+    </div>
+
+    <div>
+      <label>Temporary Password *</label>
+      <input type="password" placeholder="Enter Temporary Password" [(ngModel)]="trainer.temporaraypassword" />
+    </div>
+
+  </div>
+
+  <!-- PROFESSIONAL DETAILS -->
+  <h3 class="section-title">Professional Details</h3>
+
+  <div class="form-grid">
+
+    <div>
+      <label>Area of Expertise *</label>
+      <select [(ngModel)]="trainer.areoferperience">
+        <option value="">Select Expertise</option>
+        <option>Project Management</option>
+        <option>Agile</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Years of Experience *</label>
+      <select [(ngModel)]="trainer.yearofexperience">
+        <option>1</option><option>2</option><option>3</option>
+        <option>4</option><option>5+</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Qualifications *</label>
+      <input type="text" placeholder="Enter Qualification" [(ngModel)]="trainer.qualification" />
+    </div>
+
+    <div>
+      <label>Language Known *</label>
+      <select [(ngModel)]="trainer.languageknown">
+        <option>English</option>
+        <option>Arabic</option>
+        <option>Urdu</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Assigned Course *</label>
+      <select [(ngModel)]="trainer.assignedcourse">
+        <option>CAPM® - Arabic Course</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Course Level *</label>
+      <select [(ngModel)]="trainer.courselevel">
+        <option>Beginner</option>
+        <option>Intermediate</option>
+        <option>Advanced</option>
+        <option>Expert</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Trainer Status *</label>
+      <select [(ngModel)]="trainer.trainerstatus">
+        <option>Active</option>
+        <option>On Hold</option>
+        <option>Deactivate</option>
+      </select>
+    </div>
+
+  </div>
+
+  <div class="full-width">
+    <label>About Trainer *</label>
+    <textarea rows="4" placeholder="Enter About Trainer" [(ngModel)]="trainer.abouttrainer"></textarea>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="form-actions">
+    <button
+    type="button"
+    class="btn-danger"
+    (click)="deactivateTrainer()">
+    Deactivate Trainer
+  </button>
+    <button routerLink="/trainer-management" class="btn-outline">Back</button>
+    <button class="btn-primary" (click)="submitTrainer()">Save Changes</button>
+  </div>
+</div>

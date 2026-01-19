@@ -53,14 +53,14 @@
     <!-- PROFILE -->
     <div class="profile">
       <img [src]="user.avatar" />
-      <span>{{  getUserName() }}</span>
+      <span>{{  getUserName() }} </span>
       <i class="fa-solid fa-chevron-down"></i>
     </div>
  
     <!-- LANGUAGE -->
     <div class="lang">
       <button class="active">ENG</button>
-      <button>AR</button>
+      <button  (click)="logout()">AR</button>
     </div>
  
   </div>

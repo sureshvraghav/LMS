@@ -49,6 +49,22 @@ export class LiveClass
       time: '04:30 pm',
       duration: '3:00 hrs',
       countdown: '05:32:23'
+    },
+     {
+      title: 'CAPM® - Arabic Course - Module 2',
+      image: '/course.jpg',
+      date: '26-12-2025',
+      time: '04:30 pm',
+      duration: '3:00 hrs',
+      countdown: '05:32:23'
+    },
+     {
+      title: 'CAPM® - Arabic Course - Module 2',
+      image: '/course.jpg',
+      date: '26-12-2025',
+      time: '04:30 pm',
+      duration: '3:00 hrs',
+      countdown: '05:32:23'
     }
   ];
 
